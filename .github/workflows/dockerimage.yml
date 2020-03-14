@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Login to docker hub
+      uses: actions-hub/docker/login@master
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: cd cdkbuild && docker build . --file Dockerfile --tag cdkbuild:$(date +%s)
