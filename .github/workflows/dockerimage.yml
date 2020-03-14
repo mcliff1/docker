@@ -25,10 +25,10 @@ jobs:
     - name: Build the CDK Docker image
       if: success()
       #run: cd cdkbuild && docker build . --file Dockerfile --tag cdkbuild:$(date +%F) --tag cdkbuild:latest
-      run: cd cdkbuild && docker build . --file Dockerfile --tag cdkbuild:1.0.0
+      run: cd cdkbuild && docker build . --file Dockerfile --tag mcliff/cdkbuild:1.0.0
 
     - name: Push to docker registry
       if: success()
       uses: actions-hub/docker@master
       with:
-        args: push cdkbuild:1.0.0
+        args: push mcliff/cdkbuild:1.0.0
