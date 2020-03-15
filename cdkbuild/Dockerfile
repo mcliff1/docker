@@ -23,5 +23,5 @@ RUN rm -rf /var/cache/apk/*
 
 WORKDIR /work
 
-#ENTRYPOINT ["/usr/local/bin/sam"]
-CMD ["/bin/sh"]
+ENTRYPOINT ["/bin/bash"]
+#CMD ["/bin/sh"]
