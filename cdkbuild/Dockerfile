@@ -16,6 +16,7 @@ RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
 #RUN apk add --no-cache tzdata
 
 RUN npm -g install cdk@$CDK_VERSION
+RUN pip3 install awscli
 
 #RUN apk del build-deps
 RUN rm -rf /var/cache/apk/*
