@@ -1,6 +1,6 @@
 FROM node:10-alpine
 
-ENV CDK_VERSION=1.27.0
+ENV CDK_VERSION=1.38.0
 
 RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
         linux-headers build-base ca-certificates bash \
