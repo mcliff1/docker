@@ -1,7 +1,7 @@
 This docker image creates a build environment that has AWS cli with CDK
 
 
-**mcliff/cdkbuild:0.1.0**
+**mcliff/cdkbuild:0.1.1**
 
 Added notes on a second implementation
 
@@ -9,6 +9,10 @@ To open this interactively without invoking sam
 `docker run -it --entrypoint sh mcliff/sambuild:2.0.0`
 
 ## Releases
+
+### version 0.1.1
+ 2021/03/13
+    updated to CDK 1.42.0
 
 ### version 0.1.0
  2020/03/14
