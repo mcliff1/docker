@@ -9,7 +9,7 @@ on:
       - v1.*
 #  pull_request:
 #    branches: [ master ]
-  
+
 jobs:
 
   build:
@@ -18,7 +18,7 @@ jobs:
 
     steps:
      - uses: actions/checkout@master
-     - name: Publish to REG
+     - name: Publish to DockerHub mcliff/cdkbuild
        uses: elgohr/Publish-Docker-Github-Action@master
        with:
          name: mcliff/cdkbuild
