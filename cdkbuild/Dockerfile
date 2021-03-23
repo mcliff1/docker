@@ -1,7 +1,7 @@
 FROM node:10-alpine
 
 # latest https://github.com/aws/aws-cdk/releases
-ENV CDK_VERSION=1.38.0
+ENV CDK_VERSION=1.94.1
 
 RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
         linux-headers build-base ca-certificates bash \
@@ -14,7 +14,7 @@ RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
     #if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     #rm -r /root/.cache
 
-RUN pip3 install --upgrade pip 
+RUN pip3 install --upgrade pip
 #RUN apk add --no-cache tzdata
 
 RUN npm -g install cdk@$CDK_VERSION
