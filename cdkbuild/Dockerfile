@@ -1,18 +1,14 @@
-FROM node:12-alpine
+FROM node:16-alpine
 
 # latest https://github.com/aws/aws-cdk/releases
-ENV CDK_VERSION=1.94.1
+#ENV CDK_VERSION=2.12.0
+#ENV CDK_VERSION=1.94.1
+ENV CDK_VERSION=1.142.0
 
 RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
         linux-headers build-base ca-certificates bash \
         python3 p3-pip python3-dev \
         jq git
-    #    jq git && \
-    #python3 -m ensurepip && \
-    #rm -r /usr/lib/python*/ensurepip && \
-    #pip3 install --upgrade pip setuptools && \
-    #if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-    #rm -r /root/.cache
 
 RUN pip3 install --upgrade pip
 #RUN apk add --no-cache tzdata
