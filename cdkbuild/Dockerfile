@@ -5,7 +5,7 @@ ENV CDK_VERSION=1.94.1
 
 RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
         linux-headers build-base ca-certificates bash \
-        python3 python3-dev \
+        python3 p3-pip python3-dev \
         jq git
     #    jq git && \
     #python3 -m ensurepip && \
