@@ -8,7 +8,7 @@ ENV CDK_VERSION=1.142.0
 RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
         linux-headers build-base ca-certificates bash \
         python3 py3-pip python3-dev \
-        jq git
+        jq git openssh
 
 RUN pip3 install --upgrade pip
 #RUN apk add --no-cache tzdata
