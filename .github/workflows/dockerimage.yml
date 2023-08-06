@@ -19,7 +19,7 @@ jobs:
     steps:
      - uses: actions/checkout@master
      - name: Publish to DockerHub mcliff/cdkbuild
-       uses: elgohr/Publish-Docker-Github-Action@master
+       uses: elgohr/Publish-Docker-Github-Action@v5
        with:
          name: mcliff/cdkbuild
          username: ${{ secrets.DOCKER_USERNAME }}
