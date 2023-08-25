@@ -1,9 +1,23 @@
 This docker image creates a build environment that has AWS cli with CDK
 
-**mcliff/cdkbuild:1.2.1**
+**mcliff/cdkbuild:1.3.0** uses CDK 1.204.0 on a node18 build image
+**mcliff/cdkbuild:2.0.0** uses CDK 2.93.0 on a node20 build image
 
 
 ## Releases
+### version 2.0.0
+update to CDK 2.93.0
+and node 20 for build image
+
+### version 1.3.0
+update to CDK 1.204.0
+
+### version 1.2.3
+update to use node18 for build image
+
+### version 1.2.1
+???
+
 ### version 1.2.1
 add openssh
 
