@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 # latest https://github.com/aws/aws-cdk/releases
 #ENV CDK_VERSION=2.12.0
