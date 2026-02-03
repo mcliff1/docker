@@ -19,7 +19,7 @@ RUN apk update && \
         git \
         openssh
 
-RUN pip3 install --upgrade pip
+#RUN pip3 install --upgrade pip
 RUN npm -g install aws-cdk@$CDK_VERSION
 RUN pip3 install awscli
 
