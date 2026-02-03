@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-02-03
+
 ### Changed
 - Updated AWS CDK to version 2.1104.0 (from 2.93.0)
 - Updated Node.js base image to version 22 LTS (from version 20)
