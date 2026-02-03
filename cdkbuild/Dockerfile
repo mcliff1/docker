@@ -9,7 +9,7 @@ RUN apk --update add --virtual build-deps --no-cache curl gcc musl-dev \
         python3 py3-pip python3-dev \
         jq git openssh
 
-RUN pip3 install --upgrade pip
+#RUN pip3 install --upgrade pip
 #RUN apk add --no-cache tzdata
 
 RUN npm -g install cdk@$CDK_VERSION
