@@ -1,10 +1,24 @@
-# Docker
-collection of docker and container utilities
-(as of 2021-03 there is only one, but expecting to add more)
+# Docker Utilities
 
- Uses GitHub Action to automatically publish to Docker Hub
+Collection of Docker and container utilities for AWS development.
 
-build script uses [https://github.com/elgohr/Publish-Docker-Github-Action](Publish-Docker-Action)
+## Projects
 
-## TODO
-I have a Git Action to build this, but not sure how to update the label(version) with that.
+### cdkbuild
+A Docker image that provides a complete build environment with:
+- AWS CDK (Cloud Development Kit)
+- AWS CLI
+- Node.js LTS
+- Essential build tools
+
+See [cdkbuild/README.md](cdkbuild/README.md) for details.
+
+## Continuous Integration
+
+This repository uses GitHub Actions to automatically build and publish Docker images to Docker Hub.
+
+The build workflow uses the [Publish-Docker-Github-Action](https://github.com/elgohr/Publish-Docker-Github-Action) to automate the publishing process.
+
+## Versioning
+
+Images are versioned using semantic versioning (semver) and automatically tagged when you push version tags (e.g., `v3.0.0`) to the repository.
