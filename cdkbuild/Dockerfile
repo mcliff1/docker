@@ -3,6 +3,9 @@ FROM node:22-alpine
 # latest https://github.com/aws/aws-cdk/releases
 ENV CDK_VERSION=2.1104.0
 
+# Build argument for GitLab token to access private packages
+ARG GITLAB_TOKEN
+
 RUN apk update && \
     apk add --no-cache \
         curl \
@@ -26,6 +29,16 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install --upgrade pip
 RUN npm -g install aws-cdk@$CDK_VERSION
 RUN pip install awscli
+
+# Install matts-toolbox from private GitLab PyPI repository
+# The package is from https://gitlab.com/cliffaws/pypack
+RUN if [ -n "$GITLAB_TOKEN" ]; then \
+        pip install matts-toolbox==0.2.4 \
+            --index-url https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/cliffaws%2Fpypack/packages/pypi/simple \
+            --extra-index-url https://pypi.org/simple; \
+    else \
+        echo "Warning: GITLAB_TOKEN not provided. Skipping matts-toolbox installation."; \
+    fi
 
 RUN rm -rf /var/cache/apk/*
 

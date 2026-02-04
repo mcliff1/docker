@@ -10,6 +10,18 @@ The Docker image is built for multiple architectures:
 
 This allows the image to run natively on both AMD/Intel and ARM processors (including Apple Silicon Macs).
 
+## Building the Image
+
+This image includes the `matts-toolbox` package (v0.2.4) from a private GitLab repository. To build the image locally, you need to provide a GitLab token:
+
+```bash
+docker build --build-arg GITLAB_TOKEN=<your-gitlab-token> -t cdkbuild:local ./cdkbuild
+```
+
+The GitLab token should have `read_api` scope to access the private package registry at https://gitlab.com/cliffaws/pypack.
+
+If building without a token, the image will still build successfully, but will skip the matts-toolbox installation with a warning message.
+
 ## Previous Versions
 - **mcliff/cdkbuild:2.0.0** uses CDK 2.93.0 on node20 build image
 - **mcliff/cdkbuild:1.3.0** uses CDK 1.204.0 on node18 build image
