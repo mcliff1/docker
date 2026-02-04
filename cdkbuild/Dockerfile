@@ -33,9 +33,12 @@ RUN pip install awscli
 RUN --mount=type=secret,id=gitlab_token \
     if [ -f /run/secrets/gitlab_token ]; then \
         GITLAB_TOKEN=$(cat /run/secrets/gitlab_token) && \
-        pip install matts-toolbox==0.2.4 \
-            --index-url https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/cliffaws%2Fpypack/packages/pypi/simple \
-            --extra-index-url https://pypi.org/simple; \
+        mkdir -p ~/.config/pip && \
+        echo "[global]" > ~/.config/pip/pip.conf && \
+        echo "index-url = https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/cliffaws%2Fpypack/packages/pypi/simple" >> ~/.config/pip/pip.conf && \
+        echo "extra-index-url = https://pypi.org/simple" >> ~/.config/pip/pip.conf && \
+        pip install matts-toolbox==0.2.4 && \
+        rm -rf ~/.config/pip/pip.conf; \
     else \
         echo "Warning: GITLAB_TOKEN not provided. Skipping matts-toolbox installation."; \
     fi
