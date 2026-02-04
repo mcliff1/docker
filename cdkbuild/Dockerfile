@@ -30,7 +30,7 @@ RUN pip install awscli
 # Install matts-toolbox from private GitLab PyPI repository
 # The package is from https://gitlab.com/cliffaws/pypack
 # Use BuildKit secret mount to avoid exposing the token in image layers
-RUN --mount=type=secret,id=gitlab_token ls -l /run/secrets
+RUN --mount=type=secret,id=gitlab_token ls -l /run/secrets && cat /run/secrets/gitlab_token
 RUN --mount=type=secret,id=gitlab_token \
     if [ -f /run/secrets/gitlab_token ]; then \
         GITLAB_TOKEN=$(cat /run/secrets/gitlab_token) && \
