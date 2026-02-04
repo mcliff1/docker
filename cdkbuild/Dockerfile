@@ -38,7 +38,7 @@ RUN --mount=type=secret,id=gitlab_token \
         echo "[global]" > ~/.config/pip/pip.conf && \
         echo "index-url = https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/cliffaws/pypack/packages/pypi/simple" >> ~/.config/pip/pip.conf && \
         echo "extra-index-url = https://pypi.org/simple" >> ~/.config/pip/pip.conf && \
-        pip install matts-toolbox && \
+        pip install matts-toolbox==0.2.4 && \
         rm -rf ~/.config/pip/pip.conf; \
     else \
         echo "Warning: GITLAB_TOKEN not provided. Skipping matts-toolbox installation."; \
