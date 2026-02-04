@@ -27,6 +27,22 @@ RUN pip install --upgrade pip
 RUN npm -g install aws-cdk@$CDK_VERSION
 RUN pip install awscli
 
+# Install matts-toolbox from private GitLab PyPI repository
+# The package is from https://gitlab.com/cliffaws/pypack
+# Use BuildKit secret mount to avoid exposing the token in image layers
+RUN --mount=type=secret,id=gitlab_token \
+    if [ -f /run/secrets/gitlab_token ]; then \
+        GITLAB_TOKEN=$(cat /run/secrets/gitlab_token) && \
+        mkdir -p ~/.config/pip && \
+        echo "[global]" > ~/.config/pip/pip.conf && \
+        echo "index-url = https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/cliffaws/pypack/packages/pypi/simple" >> ~/.config/pip/pip.conf && \
+        echo "extra-index-url = https://pypi.org/simple" >> ~/.config/pip/pip.conf && \
+        pip install matts-toolbox && \
+        rm -rf ~/.config/pip/pip.conf; \
+    else \
+        echo "Warning: GITLAB_TOKEN not provided. Skipping matts-toolbox installation."; \
+    fi
+
 RUN rm -rf /var/cache/apk/*
 
 WORKDIR /work
