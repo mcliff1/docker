@@ -3,6 +3,13 @@ This docker image creates a build environment that has AWS CLI with AWS CDK
 ## Current Version
 **mcliff/cdkbuild:3.0.0** uses CDK 2.1104.0 on Node.js 22 LTS (alpine)
 
+## Multi-Architecture Support
+The Docker image is built for multiple architectures:
+- **linux/amd64** (x86_64)
+- **linux/arm64** (ARM64/AArch64)
+
+This allows the image to run natively on both AMD/Intel and ARM processors (including Apple Silicon Macs).
+
 ## Previous Versions
 - **mcliff/cdkbuild:2.0.0** uses CDK 2.93.0 on node20 build image
 - **mcliff/cdkbuild:1.3.0** uses CDK 1.204.0 on node18 build image
