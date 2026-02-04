@@ -3,9 +3,6 @@ FROM node:22-alpine
 # latest https://github.com/aws/aws-cdk/releases
 ENV CDK_VERSION=2.1104.0
 
-# Build argument for GitLab token to access private packages
-ARG GITLAB_TOKEN
-
 RUN apk update && \
     apk add --no-cache \
         curl \
@@ -32,7 +29,10 @@ RUN pip install awscli
 
 # Install matts-toolbox from private GitLab PyPI repository
 # The package is from https://gitlab.com/cliffaws/pypack
-RUN if [ -n "$GITLAB_TOKEN" ]; then \
+# Use BuildKit secret mount to avoid exposing the token in image layers
+RUN --mount=type=secret,id=gitlab_token \
+    if [ -f /run/secrets/gitlab_token ]; then \
+        GITLAB_TOKEN=$(cat /run/secrets/gitlab_token) && \
         pip install matts-toolbox==0.2.4 \
             --index-url https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/cliffaws%2Fpypack/packages/pypi/simple \
             --extra-index-url https://pypi.org/simple; \
