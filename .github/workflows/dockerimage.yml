@@ -48,6 +48,9 @@ jobs:
             type=semver,pattern={{major}}
             type=raw,value=latest,enable={{is_default_branch}}
 
+      # Build and push the Docker image
+      # Note: GITLAB_TOKEN secret must be configured in repository settings to install matts-toolbox
+      # If not set, the build will succeed but skip matts-toolbox installation
       - name: Build and push multi-arch Docker image
         uses: docker/build-push-action@v5
         with:
