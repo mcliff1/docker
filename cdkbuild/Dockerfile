@@ -37,7 +37,7 @@ RUN --mount=type=secret,id=gitlab_token \
         mkdir -p ~/.config/pip && \
         echo "[global]" > ~/.config/pip/pip.conf && \
         echo "extra-index-url = https://read-2026:${GITLAB_TOKEN}@gitlab.com/api/v4/projects/33892070/packages/pypi/simple" >> ~/.config/pip/pip.conf && \
-        pip install matts-toolbox==0.2.4 && \
+        pip install matts-toolbox && \
         rm -rf ~/.config/pip/pip.conf; \
     else \
         echo "Warning: GITLAB_TOKEN not provided. Skipping matts-toolbox installation."; \
